@@ -65,3 +65,14 @@ FOREIGN KEY (item_id) REFERENCES item(item_id),
 FOREIGN KEY (repo_id) REFERENCES repo(repo_id),
 UNIQUE (item_id,repo_id)
 );
+
+CREATE VIEW contract_view AS
+SELECT * FROM (item i NATURAL LEFT JOIN contract c),employee WHERE processer=emp_id;
+
+CREATE VIEW todo_contract AS
+SELECT * FROM contract_view
+WHERE act_num<contract_num;
+
+CREATE VIEW item_view AS
+SELECT *,SUM(price) FROM (SELECT * FROM item i NATURAL LEFT JOIN item_rec rec) AS t
+GROUP BY repo_id;
