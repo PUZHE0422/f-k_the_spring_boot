@@ -16,6 +16,16 @@ pic_url VARCHAR(100),
 UNIQUE(item_name)
 );
 
+CREATE TABLE employee
+(
+emp_id INT AUTO_INCREMENT PRIMARY KEY,
+emp_name VARCHAR(100),
+avater_url VARCHAR(100),
+role INT NOT NULL,
+pwd VARCHAR (100) NOT NULL,
+UNIQUE (emp_name)
+);
+
 CREATE TABLE contract
 (
 contract_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,8 +34,10 @@ item_id INT,
 contract_num INT DEFAULT 0,
 price INT DEFAULT 0,
 contract_date DATE,
+processer INT,
 act_num INT DEFAULT 0,
-FOREIGN KEY (item_id) REFERENCES item(item_id)
+FOREIGN KEY (item_id) REFERENCES item(item_id),
+FOREIGN KEY (processer) REFERENCES employee(emp_id)
 );
 
 CREATE TABLE item_log
@@ -36,9 +48,11 @@ repo_id INT,
 item_id INT,
 num INT,
 contract_id INT,
+processer INT,
 FOREIGN KEY(repo_id) REFERENCES repo(repo_id),
 FOREIGN KEY(item_id) REFERENCES item(item_id),
-FOREIGN KEY(contract_id) REFERENCES contract(contract_id)
+FOREIGN KEY(contract_id) REFERENCES contract(contract_id),
+FOREIGN KEY(processer) REFERENCES employee(emp_id)
 );
 
 CREATE TABLE item_rec
