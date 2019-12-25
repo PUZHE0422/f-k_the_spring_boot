@@ -1,12 +1,12 @@
 package com.example.demo.entity;
 
+//创建实体对象
 public class Item {
     private int item_id;
     private String item_name;
     private String unit;
-    private int repo_id;
-    private int num;
-    private int price;
+    private double price;
+    private String pic_url;
 
     public int getItem_id() {
         return item_id;
@@ -32,29 +32,19 @@ public class Item {
         this.unit = unit;
     }
 
-    public int getRepo_id() {
-        return repo_id;
-    }
-
-    public void setRepo_id(int repo_id) {
-        this.repo_id = repo_id;
-    }
-
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
+    public String getPic_url() {
+        return pic_url;
+    }
 
+    public void setPic_url(String pic_url) {
+        this.pic_url = pic_url;
+    }
 }
